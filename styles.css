@@ -1,0 +1,65 @@
+body
+{
+    height: 100vh;
+    background-image: url("Travel.jpg");
+	background-size: cover;
+    background-position: center;
+}
+.Welcome1,.Welcome2
+{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-family:'Courier New', Courier, monospace;
+    box-shadow: 10px 10px 10px;
+    margin-bottom: 20px;
+}
+.Questions
+{
+    width: 25vw;
+    display: inline-block;
+}
+.Q1,.Q2,.Q3,.Other
+{
+    margin-bottom: 30px;
+    justify-content: left;
+    /*background: #CCCCCC;*/
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.CheckBox
+{
+   display: inline-block; 
+}
+
+.SearchButton
+{
+    height: 30px;
+    width: 200px;
+    background-color: blueviolet;
+    border-radius: 7px;
+    transition:background-color 0.5s,box-shadow 0.5s;
+    box-shadow: 10px 10px 10px;
+    margin-top: 50px;
+    border-color: blueviolet;
+}
+.SearchButton:hover
+{
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.60);
+    background-color: rgb(244, 133, 151);
+    cursor: pointer;
+    
+}
+.SearchButton:active
+{
+    cursor:cell;
+}
+.Results
+{
+    display:flex; 
+    flex: 1; 
+    align-items:center; 
+    justify-content: center; 
+    flex-direction: column; 
+    font-size: 25px; 
+    font-weight: 400;
+}

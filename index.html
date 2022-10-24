@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TravelRecommendation</title>
+        <script type="text/javascript" src="ExpertSys.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="Welcome1">Welcome to "TravelRecommendation"!</div>
+        <div class="Welcome2">Find YOUR upcoming trip. (;</div>
+        <div style="display: flex; flex-direction: row-reverse;">
+            <div class="Questions" style="width: 225px;">
+                <div class="Q1">
+                    <div>Continent:</div>
+                    <div class="ContinentChoices">
+                        <div class="ContinentChoices1" style="display: flex;">
+                            <input id="Africa" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Africa</div>
+                            <input id="Asia" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Asia</div>
+                            <input id="Australia" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Australia</div>
+                        </div>
+                        <div class="ContinentChoices2" style="display: flex;">
+                            <input id="Europe" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Europe</div>
+                            <input id="NorthAmerica" class="CheckBox" type="checkBox" > <div style="display: inline-block;"> NorthAmerica</div>
+                        </div>
+                        <div class="ContinentChoices3" style="display: flex;">
+                            <input id="SouthAmerica" class="CheckBox" type="checkBox" > <div style="display: inline-block;">SouthAmerica</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Q2">
+                    <div>Language:</div>
+                    <div class="LanguageChoices1">
+                        <div style="display: flex;">
+                            <input id="English" class="CheckBox" type="checkBox" > <div style="display: inline-block;">English</div>
+                            <input id="Arabic" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Arabic</div>
+                            <input id="Turkish" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Turkish</div>
+                        </div>
+                        <div class="LanguageChoices1" style="display: flex;">
+                            <input id="Spanish" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Spanish</div>
+                            <input id="Russian" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Russian</div>
+                            <input id="Hindi" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Hindi</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Q3">
+                    <div style="font-size:Large ;">Nature:</div>
+                    <div class="NatureChoices1" style="display: flex;">
+                        <input id="Forest" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Forest</div>
+                        <input id="Desert" class="CheckBox" type="checkBox" > <div style="display: inline-block;">Desert</div>
+                        <input id="Sea" class="CheckBox" type="checkBox"> <div style="display: inline-block;">Sea</div>
+                    </div>
+                </div>
+                <div id="Other" class="Other">
+                    Other:
+                    <div class="AddOther" style="display: flex;">
+                        <input id="OtherInput" type="text"> <button id="AddButton"class="AddButton" onclick="addButton()">ADD</button>
+                    </div>
+                    <div id="OtherList" class="OtherList" style="display:flex;  flex-direction:column;">
+                        <div style="display: flex;">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="SearchButton" onclick="Search()">Search</button>
+            </div>
+            <div class="Results">
+                <div style="margin-bottom: 50px; font-weight: bolder;">OUR EXPERT-SYSTEM RECOMMENDS THESE COUNTRIES FOR YOU:</div>
+                <div id="Output" class="Output">
+                    RESULTS WILL BE SHOWN HERE
+                </div>
+            </div>
+            <div style="width:225px; display: flex; flex-direction: column; align-items: center;">
+                <div>Inference Engine</div>
+                <input id="FirstRule" type="text">
+                <div>+</div>
+                <input id="SecondRule" type="text">
+                <div>=</div>
+                <input id="Inference" type="text">
+                <button style="margin-top:20px ;" onclick="update()">Update</button>
+            </div>
+        </div>
+    </body>
+</html>
