@@ -31,34 +31,55 @@ let adjs=[]
 
 let idCounter=2
 
-let other=[]
+let otherAdjs=[]
 
 let selectedCountry=[]
 
-
-function selectCountry(filter)
+function filter(country)
 {
-    country.forEach(obj =>
-    {
-        obj.forEach(key=>{
-            if(key==filter)
-            {
-                selectedCountry.push(obj);
-            }
+    selectedCountry=selectedCountry.filter(elem=>
+        {
+            return elem!==country[name];
         })
-    })
+        selectedCountry.push(country);
+}
+
+function addCountry(countryName)
+{
+    selectedCountry=selectedCountry.filter(countryObj=>
+        {
+            return countryName!==countryObj;
+        })
+        selectedCountry.push(countryName);
+}
+
+function selectCountry()
+{
+    adjs.forEach(adjObj=>
+        {
+            country.forEach(countryObj=>
+                {
+                    countryObj.forEach(countryObjAdj=>
+                        {
+                            if(adjObj.name==countryObjAdj)
+                            {
+                                addCountry(countryObj[name]);
+                            }
+                        })
+                })
+        })
 }
 
 
 function createOther(key)
 {
-    other.push({name:key,id:idCounter++});
+    otherAdjs.push({name:key,id:idCounter++});
     renderOther();
 }
 
 function removeOther(id)
 {
-    other=other.filter(obj=>
+    otherAdjs=otherAdjs.filter(obj=>
         {
                 return obj.id!==id;
         })
@@ -77,15 +98,15 @@ function addToAdjs(adj)
         
 }
 
-function restartAdjs()
+function restartArr(Arr)
 {
-    adjs=new Array();
-    
-    other.forEach(elem=>
-        {
-            adjs.push(elem.name);
-        })
+    Arr=new Array();
+}
 
+function combineAdjs()
+{
+    adjs=otherAdjs;
+    check()
 }
 
 function check()
@@ -94,7 +115,7 @@ function check()
         {
             if(document.getElementById(filter).checked)
             {
-                addToAdjs(filter);   
+                addToAdjs({name:filter,id:0});   
             }
     
             
@@ -126,24 +147,23 @@ function infer(inference,rule1,rule2="All")
 }
 //CONTROLLER
 
-function Search()
+function SearchButton()
 {
-    selectedCountry= new Array();
-    restartAdjs();
-    check();
+    selectedCountry=new Array();
+    adjs=new Array();
+    combineAdjs();
 
-    adjs.forEach(adj=>
-        {
-            selectCountry(adj);
-        })
+    selectCountry();
+
     render();
+    
 }
 
 function addButton()
 {
     let val=document.getElementById("OtherInput").value;
     let checker=1;
-    other.forEach(key=>{
+    otherAdjs.forEach(key=>{
         if(key.name==val)
         {
             checker=0;
@@ -160,7 +180,7 @@ function removeButton(id)
     removeOther(id);
 }
 
-function update()
+function updateButton()
 {
     let inference;
     if(document.getElementById("Inference").value=="")
@@ -195,6 +215,10 @@ function render()
 {
     renderOther();
     renderOutput();
+    /*
+    console.log(otherAdjs);
+    console.log(adjs);*/
+    console.log(selectedCountry);
 }
 
 function renderOutput()
@@ -203,7 +227,7 @@ function renderOutput()
     selectedCountry.forEach(obj =>
     {
         let nameElement=document.createElement("div");
-        nameElement.innerText=obj[name];
+        nameElement.innerText=obj;
         nameElement.style.fontWeight="bolder";
         document.getElementById("Output").appendChild(nameElement);
     })
@@ -212,7 +236,7 @@ function renderOutput()
 function renderOther()
 {
     document.getElementById("OtherList").innerHTML="";
-    other.forEach(function(key)
+    otherAdjs.forEach(function(key)
     {
         let otherElement=document.createElement("div");
         otherElement.id=key.id;
