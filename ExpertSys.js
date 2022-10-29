@@ -35,22 +35,31 @@ let otherAdjs=[]
 
 let selectedCountry=[]
 
-function filter(country)
+
+function sortSelectedCountryByPower()
 {
-    selectedCountry=selectedCountry.filter(elem=>
-        {
-            return elem!==country[name];
-        })
-        selectedCountry.push(country);
+    selectedCountry.sort(function(a, b) {
+        return b.power - a.power;
+      });
 }
 
 function addCountry(countryName)
 {
-    selectedCountry=selectedCountry.filter(countryObj=>
-        {
-            return countryName!==countryObj;
-        })
-        selectedCountry.push(countryName);
+        let selected=0;
+        selectedCountry.forEach(elem=>
+            {
+                if(countryName==elem.name)
+                {
+                    elem.power+=1;
+                    selected=1;
+                    return;
+                }
+            })
+            if(!selected){
+                console.log("didnt return in "+ countryName);
+                selectedCountry.push({name:countryName,power:parseInt("1")});
+            }
+            sortSelectedCountryByPower();
 }
 
 function selectCountry()
@@ -94,8 +103,6 @@ function addToAdjs(adj)
         })
         adjs.push(adj);
 
-        
-        
 }
 
 function restartArr(Arr)
@@ -117,8 +124,6 @@ function check()
             {
                 addToAdjs({name:filter,id:0});   
             }
-    
-            
         });
 }
 
@@ -142,9 +147,9 @@ function infer(inference,rule1,rule2="All")
                 obj.push(inference);
             }
         })
-
-    
 }
+
+
 //CONTROLLER
 
 function SearchButton()
@@ -206,7 +211,7 @@ function updateButton()
         infer(inference,rule);
     }else
     {
-        alert("fuck off little ass");
+        alert("ThereIsNoElse!!");
     }
 }
 
@@ -215,9 +220,7 @@ function render()
 {
     renderOther();
     renderOutput();
-    /*
-    console.log(otherAdjs);
-    console.log(adjs);*/
+
     console.log(selectedCountry);
 }
 
@@ -227,7 +230,7 @@ function renderOutput()
     selectedCountry.forEach(obj =>
     {
         let nameElement=document.createElement("div");
-        nameElement.innerText=obj;
+        nameElement.innerText=obj.name;
         nameElement.style.fontWeight="bolder";
         document.getElementById("Output").appendChild(nameElement);
     })
