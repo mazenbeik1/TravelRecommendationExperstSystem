@@ -165,7 +165,7 @@ function SearchButton()
 
 function addButton()
 {
-    let val=document.getElementById("OtherInput").value;
+    let val=formatInput(document.getElementById("OtherInput").value);
     let checker=1;
     otherAdjs.forEach(key=>{
         if(key.name==val)
@@ -184,29 +184,37 @@ function removeButton(id)
     removeOther(id);
 }
 
+function formatInput(input)
+{
+    input=input.toLowerCase();
+    input = input.replace(input[0], input[0].toUpperCase());
+    return input;
+}
+
 function updateButton()
 {
     let inference;
+
     if(document.getElementById("Inference").value=="")
     {
         alert("Please Insert Inference");
     }else if(document.getElementById("FirstRule").value!=="" && document.getElementById("SecondRule").value!=="")
     {
-        let rule1=document.getElementById("FirstRule").value;
-        let rule2=document.getElementById("SecondRule").value;
-        inference=document.getElementById("Inference").value
+        let rule1=formatInput(document.getElementById("FirstRule").value);
+        let rule2=formatInput(document.getElementById("SecondRule").value);
+        inference=formatInput(document.getElementById("Inference").value);
         infer(inference,rule1,rule2);
     }else if(document.getElementById("FirstRule").value=="" || document.getElementById("SecondRule").value=="")
     {
         let rule;
         if(document.getElementById("FirstRule").value=="")
         {
-            rule=document.getElementById("SecondRule").value;
+            rule=formatInput(document.getElementById("SecondRule").value);
         }else if(document.getElementById("SecondRule").value=="")
         {
-            rule=document.getElementById("FirstRule").value;
+            rule=formatInput(document.getElementById("FirstRule").value);
         }
-        inference=document.getElementById("Inference").value;
+        inference=formatInput(document.getElementById("Inference").value);
         infer(inference,rule);
     }else
     {
