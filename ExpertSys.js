@@ -56,7 +56,6 @@ function addCountry(countryName)
                 }
             })
             if(!selected){
-                console.log("didnt return in "+ countryName);
                 selectedCountry.push({name:countryName,power:parseInt("1")});
             }
             sortSelectedCountryByPower();
