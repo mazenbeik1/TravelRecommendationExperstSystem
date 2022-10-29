@@ -1,10 +1,10 @@
 //MODEL
 const name=0;
 const country=[
-                ["Egypt","Arabic","Africa","All"],
+                ["Egypt","Arabic","Africa","Sea","Forest","Desert","All"],
                 ["Palestine","Arabic","Asia","All"],
-                ["SaudiArabia","Arabic","Asia",],
-                ["Turkey","Turkish","Asia","All"],
+                ["SaudiArabia","Arabic","Asia","Desert","All"],
+                ["Turkey","Turkish","Asia","Forest","All"],
                 ["UnitedKingdom","English","Europe","All"],
                 ["America","English","NorthAmerica","All"]
                 ]
