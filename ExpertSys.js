@@ -94,6 +94,11 @@ function removeOther(id)
         renderOther();
 }
 
+function restartArr(Arr)
+{
+    Arr=new Array();
+}
+
 function addToAdjs(adj)
 {
     adjs=adjs.filter(elem=>
@@ -104,26 +109,29 @@ function addToAdjs(adj)
 
 }
 
-function restartArr(Arr)
-{
-    Arr=new Array();
-}
-
-function combineAdjs()
-{
-    adjs=otherAdjs;
-    check()
-}
-
 function check()
 {
     checkBox.forEach(filter =>
         {
             if(document.getElementById(filter).checked)
             {
-                addToAdjs({name:filter,id:0});   
+                let notInAdjs=1;
+                adjs.forEach(adj=>
+                    {
+                        if(adj.name==filter)
+                        {
+                            notInAdjs=0;
+                        }
+                    })
+                if(notInAdjs){addToAdjs({name:filter,id:0});}   
             }
         });
+}
+
+function combineAdjs()
+{
+    adjs=otherAdjs;
+    check()
 }
 
 function infer(inference,rule1,rule2="All")
@@ -165,18 +173,21 @@ function SearchButton()
 
 function addButton()
 {
-    let val=formatInput(document.getElementById("OtherInput").value);
-    let checker=1;
-    otherAdjs.forEach(key=>{
-        if(key.name==val)
-        {
-            checker=0;
-        }
-    })
-    if(checker)
+    if(document.getElementById("OtherInput").value!=="")
     {
-        createOther(val);
-    }
+        let val=formatInput(document.getElementById("OtherInput").value);
+        let checker=1;
+        otherAdjs.forEach(key=>{
+            if(key.name==val)
+            {
+                checker=0;
+            }
+        })
+        if(checker)
+        {
+            createOther(val);
+        }
+    }else(alert("Please enter a keyword first!!"))
 }
 
 function removeButton(id)
@@ -197,14 +208,14 @@ function updateButton()
 
     if(document.getElementById("Inference").value=="")
     {
-        alert("Please Insert Inference");
+        alert("Please enter Inference!!");
     }else if(document.getElementById("FirstRule").value!=="" && document.getElementById("SecondRule").value!=="")
     {
         let rule1=formatInput(document.getElementById("FirstRule").value);
         let rule2=formatInput(document.getElementById("SecondRule").value);
         inference=formatInput(document.getElementById("Inference").value);
         infer(inference,rule1,rule2);
-    }else if(document.getElementById("FirstRule").value=="" || document.getElementById("SecondRule").value=="")
+    }else if(document.getElementById("FirstRule").value!=="" || document.getElementById("SecondRule").value!=="")
     {
         let rule;
         if(document.getElementById("FirstRule").value=="")
@@ -216,10 +227,10 @@ function updateButton()
         }
         inference=formatInput(document.getElementById("Inference").value);
         infer(inference,rule);
-    }else
+    }else if(document.getElementById("FirstRule").value=="" || document.getElementById("SecondRule").value=="")
     {
-        alert("ThereIsNoElse!!");
-    }
+        alert("Please enter atleast 1 rule!!");
+    }else(alert("Unexpected error!"))
 }
 
 //VIEW
@@ -228,7 +239,7 @@ function render()
     renderOther();
     renderOutput();
 
-    console.log(selectedCountry);
+    console.log(adjs);
 }
 
 function renderOutput()
