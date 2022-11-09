@@ -6,7 +6,12 @@ const country=[
                 ["SaudiArabia","Arabic","Asia","Desert","All"],
                 ["Turkey","Turkish","Asia","Forest","All"],
                 ["UnitedKingdom","English","Europe","All"],
-                ["America","English","NorthAmerica","All"]
+                ["America","English","NorthAmerica","All"],
+                ["Russia","Russian","Snow","Asia","Europe","All"],
+                ["India","Hindi","Asia","All"],
+                ["Spain","Spanish","Europe","All"],
+                ["Australia","Australian","Australia","All"],
+                ["Brazil","Portuguese","SouthAmerica","Forest","All"]
                 ]
 
 const checkBox=[
