@@ -33,22 +33,28 @@ body
 
 .SearchButton
 {
-    height: 30px;
-    width: 200px;
-    background-color: blueviolet;
-    border-radius: 7px;
-    transition:background-color 0.5s,box-shadow 0.5s;
-    box-shadow: 10px 10px 10px;
-    margin-top: 50px;
-    border-color: blueviolet;
-}
-.SearchButton:hover
-{
-    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.60);
-    background-color: rgb(244, 133, 151);
-    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    transition: background-color 0.15s,box-shadow 0.15s, width 0.35s, height 0.35s;
+    margin: 10px;
+    font-weight: bolder;
     
 }
+
+
+
+.SearchButton:hover
+{
+    background-color: skyblue;
+    cursor: pointer;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    width:200px;
+    height:65px;
+}
+
 .SearchButton:active
 {
     cursor:cell;
